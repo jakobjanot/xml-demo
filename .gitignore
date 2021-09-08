@@ -2,3 +2,5 @@
 /stardog-tmp
 /stardog-ext
 /stardog-license-key.bin
+/wwwroot/*.html
+!/wwwroot/index.html
