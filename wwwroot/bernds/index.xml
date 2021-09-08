@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="restaurant.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet href="html.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/html.xsl" type="text/xsl"?>
 <restaurant>
 	<name>Thin crust Pizzas</name>
 	<opening-hours>
@@ -15,7 +15,7 @@
 			<price currency="$">12.50</price>
 			<decription>
 				<topping type="tomato">Fresh tomato</topping>, 
-				<topping tyep="mozzarella">fresh mozzarella</topping> and 
+				<topping type="mozzarella">fresh mozzarella</topping> and 
 				<topping type="basil">fresh basil</topping>
 			</decription>
 		</pizza>
@@ -74,7 +74,7 @@
 				<topping type="mozzarella">mozzarella</topping>, 
 				<topping type="parma">parma</topping>, 
 				<topping type="bacon">bacon</topping>, 
-        <topping type="argula">fresh arugula</topping>
+        		<topping type="argula">fresh arugula</topping>
 			</decription>
 		</pizza>
 	</menu>
