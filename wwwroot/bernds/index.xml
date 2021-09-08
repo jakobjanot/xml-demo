@@ -2,7 +2,7 @@
 <?xml-model href="restaurant.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet href="/xsl/html.xsl" type="text/xsl"?>
 <restaurant>
-	<name>Thin crust Pizzas</name>
+	<name>Bernds Thin-crust Pizzas</name>
 	<opening-hours>
 		<from>10:00</from>
 		<to>22:00</to>

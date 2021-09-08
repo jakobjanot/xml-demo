@@ -4,10 +4,12 @@
 
     <xsl:template match="restaurant">
         <html>
-            <title><xsl:value-of select="name" /></title>
+            <title>
+                <xsl:value-of select="name"/>
+            </title>
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <link rel="stylesheet" href="/style.css"/>
+            <link rel="stylesheet" href="/styles/main.css"/>
             <link rel="stylesheet" href="./style.css"/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC"/>
             <body>
@@ -47,12 +49,6 @@
         </div>
     </xsl:template>
 
-    <xsl:template match="restaurant/opening-hours">
-        <div class="display-bottomleft padding">
-            <xsl:apply-templates select="opening-hours"/>
-        </div>
-    </xsl:template>
-
     <xsl:template match="restaurant/contact">        
         <div class="container padding-64 xlarge">
             <div class="content">
@@ -61,4 +57,6 @@
             </div>
         </div>
     </xsl:template>
+
+    <xsl:template match="node()"/>
 </xsl:stylesheet>
