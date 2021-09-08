@@ -1,0 +1,45 @@
+version: '3'
+services:
+  nginx: 
+    container_name: rdf-demo-nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./wwwroot:/usr/share/nginx/html
+    ports:
+      - 80:80
+      
+  stardog:
+    container_name: rdf-demo-stardog
+    image: stardog/stardog:latest
+    restart: unless-stopped
+    environment:
+        - STARDOG_SERVER_JAVA_ARGS=-Djava.io.tmpdir=/var/opt/tmp -Xms4g -Xmx4g -XX:MaxDirectMemorySize=8g
+        - STARDOG_EXT=/var/opt/stardog-ext
+    ports:
+      - 5820:5820
+    volumes:
+        - ./stardog-data:/var/opt/stardog    # main Stardog directory where database files will be stored, ideally on SSD
+        - ./stardog-tmp:/var/opt/tmp         # directory for temporary files (potentially big)
+        - ./stardog-ext:/var/opt/stardog-ext # directory for additional jar files, e.g. jdbc drivers etc
+        - ./stardog-license-key.bin:/var/opt/stardog/stardog-license-key.bin
+#         - stardog-opennlp:/var/opt/stardog-opennlp #directory for opennlp models
+
+  stardog-studio:
+    container_name: rdf-demo-stardog-studio
+    image: stardog/stardog-studio:current
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    
+#     # logging:
+#     #   driver: json-file
+#     #   options:
+#     #     max-size: "200k"
+#     #     max-file: "10"
+
+volumes:
+    stardog-data:
+    stardog-tmp:
+    stardog-ext:
+#     stardog-opennlp:
