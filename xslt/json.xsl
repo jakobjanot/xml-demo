@@ -1,24 +1,37 @@
 <?xml version="1.0"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="3.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns="http://www.w3.org/2005/xpath-functions">
+    
+    <xsl:output method="text"/>
 
-    <xsl:template match="/">
-    <html>
-    <body>
-        <h2>My CD Collection</h2>
-        <table border="1">
-        <tr bgcolor="#9acd32">
-            <th>Title</th>
-            <th>Artist</th>
-        </tr>
-        <xsl:for-each select="catalog/cd">
-            <tr>
-            <td><xsl:value-of select="title"/></td>
-            <td><xsl:value-of select="artist"/></td>
-            </tr>
-        </xsl:for-each>
-        </table>
-    </body>
-    </html>
+    <xsl:template match="restaturant">
+        <map>
+            <xsl:apply-templates />
+        </map>
     </xsl:template>
 
+    <xsl:template match="menu">
+        <array>
+            <xsl:apply-templates/>
+        </array>
+    </xsl:template>
+
+    <xsl:template match="pizza">
+        <map>
+            <xsl:apply-templates />
+        </map>
+    </xsl:template>
+
+    <xsl:template match="price">
+        <string key="string">
+            <xsl:value-of select="concat(@currency, .)"/>
+        </string>
+    </xsl:template>
+
+    <xsl:template match="*">
+        <string key="{local-name()}">
+            <xsl:value-of select="."/>
+        </string>
+    </xsl:template>
 </xsl:stylesheet>
