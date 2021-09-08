@@ -1,0 +1,54 @@
+default namespace = ""
+
+start = restaurant
+
+restaurant = element restaurant { name, opening-hours, phone, menu }
+
+phone = element phone { pattern: "\(\d{3}\) \d{3}-\d{4}"/ }
+
+menu = element menu { pizza+ }
+
+opening-hours = element opening-hours {
+      element from { xsd:time },
+      element to { xsd:time }
+    }
+
+pizza = element pizza { id, name, price, description }
+
+price = element price {
+  attribute currency { text },
+  xsd:decimal
+}
+
+description = element decription { (text+ | base? | topping+)+ }
+
+base = element base {
+  attribute type { "thin-crust" | "deep-pan" },
+  text
+}
+topping = element topping { attribute type { topping-types }, text }
+
+topping-types = (
+  "argula" |
+  "bacon" |
+  "basil" |
+  "beef" |
+  "cheddar" |
+  "chicken" |
+  "gouda" |
+  "mozzarella" |
+  "onion" |
+  "parma" |
+  "parmesan" |
+  "pecorino" |
+  "pepperoni" |
+  "pineapple" |
+  "salsa-sauce" |
+  "salsiccia" |
+  "spinach" |
+  "tomato"
+)
+
+name = element name { text }
+
+id = element id { xsd:ID }
